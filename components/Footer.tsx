@@ -45,9 +45,42 @@ export default function Footer() {
         <div style={{ flex: '1 1 180px', minWidth: '180px' }}>
           <h4 style={{ fontSize: '1.2rem', marginBottom: '12px' }}>Follow Us</h4>
           <div style={{ display: 'flex', gap: '15px' }}>
-            <a href="https://facebook.com" style={iconLinkStyle}><i className="fab fa-facebook-f"></i></a>
-            <a href="https://instagram.com" style={iconLinkStyle}><i className="fab fa-instagram"></i></a>
-            <a href="https://linkedin.com" style={iconLinkStyle}><i className="fab fa-linkedin-in"></i></a>
+            <a 
+              href="https://facebook.com" 
+              style={iconLinkStyle}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'translateY(-3px)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'translateY(0)';
+              }}
+            >
+              <i className="fab fa-facebook-f"></i>
+            </a>
+            <a 
+              href="https://instagram.com" 
+              style={iconLinkStyle}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'translateY(-3px)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'translateY(0)';
+              }}
+            >
+              <i className="fab fa-instagram"></i>
+            </a>
+            <a 
+              href="https://linkedin.com" 
+              style={iconLinkStyle}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'translateY(-3px)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'translateY(0)';
+              }}
+            >
+              <i className="fab fa-linkedin-in"></i>
+            </a>
           </div>
         </div>
 
@@ -96,6 +129,3 @@ const iconLinkStyle = {
   transition: 'all 0.3s',
 };
 
-iconLinkStyle[':hover'] = {
-  transform: 'translateY(-3px)',
-};
