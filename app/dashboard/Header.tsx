@@ -202,14 +202,50 @@ export default function Header({ primaryColor = PRIMARY_COLOR, onSidebarToggle, 
                 zIndex: 1100,
               }}
             >
-              <button style={dropdownItemStyle} onClick={() => alert("Go to Profile")}>
+              <button style={{
+                width: "100%",
+                padding: "12px 16px",
+                background: "none",
+                border: "none",
+                textAlign: "left",
+                fontSize: 16,
+                color: "#333",
+                cursor: "pointer",
+                outline: "none",
+                transition: "background-color 0.2s",
+                userSelect: "none",
+              }} onClick={() => alert("Go to Profile")}>
                 Profile
               </button>
-              <button style={dropdownItemStyle} onClick={() => alert("Go to Settings")}>
+              <button style={{
+                width: "100%",
+                padding: "12px 16px",
+                background: "none",
+                border: "none",
+                textAlign: "left",
+                fontSize: 16,
+                color: "#333",
+                cursor: "pointer",
+                outline: "none",
+                transition: "background-color 0.2s",
+                userSelect: "none",
+              }} onClick={() => alert("Go to Settings")}>
                 Settings
               </button>
               <hr style={{ margin: "6px 0", borderColor: "#eee" }} />
-              <button style={dropdownItemStyle} onClick={() => {
+              <button style={{
+                width: "100%",
+                padding: "12px 16px",
+                background: "none",
+                border: "none",
+                textAlign: "left",
+                fontSize: 16,
+                color: "#333",
+                cursor: "pointer",
+                outline: "none",
+                transition: "background-color 0.2s",
+                userSelect: "none",
+              }} onClick={() => {
                 setDropdownOpen(false);
                 if (onLogout) {
                   onLogout();
@@ -224,17 +260,3 @@ export default function Header({ primaryColor = PRIMARY_COLOR, onSidebarToggle, 
     </header>
   );
 }
-
-const dropdownItemStyle = {
-  width: "100%",
-  padding: "12px 16px",
-  background: "none",
-  border: "none",
-  textAlign: "left",
-  fontSize: 16,
-  color: "#333",
-  cursor: "pointer",
-  outline: "none",
-  transition: "background-color 0.2s",
-  userSelect: "none",
-};
