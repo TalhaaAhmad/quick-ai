@@ -8,6 +8,20 @@ const PRIMARY_COLOR = '#2C7B34';
 
 interface Business {
   _id: string;
+  ownerName: string;
+  email: string;
+  ownerId: string;
+  businessName: string;
+  businessDescription: string;
+  whatsappIntegrated: boolean;
+  whatsappToken?: string;
+  createdAt: number;
+  roles: string[];
+  settings: {
+    notifications: boolean;
+    language: string;
+  };
+  lastLoginAt: number;
 }
 
 interface Product {

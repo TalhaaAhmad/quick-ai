@@ -13,11 +13,25 @@ const PRIMARY_COLOR = "#2C7B34";
 const BACKGROUND_COLOR = "#f8faf9";
 const TEXT_COLOR = "#1a1a1a";
 
+// Define user type
+type User = {
+  userId: string;
+  businessId: string;
+  businessName?: string;
+  email: string;
+  ownerName: string;
+};
+
 export default function Dashboard() {
   const [activeMenu, setActiveMenu] = useState("dashboard");
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState<User | null>(null as User | null);
   const router = useRouter();
+
+  // Type guard to check if user has required properties
+  const isValidUser = (user: any): user is User => {
+    return user && typeof user.userId === 'string' && typeof user.businessId === 'string';
+  };
 
   useEffect(() => {
     // Get user info from localStorage
@@ -53,7 +67,7 @@ export default function Dashboard() {
 
   // Get business data from Convex
   const business = useQuery(api.auth.getBusinessByOwnerId, 
-    user?.userId ? { ownerId: user.userId } : "skip"
+    user ? { ownerId: (user as any).userId } : "skip"
   );
 
   // Logout function
@@ -114,7 +128,7 @@ export default function Dashboard() {
         >
           {activeMenu === "dashboard" && <DashboardOverview primaryColor={PRIMARY_COLOR} business={business} />}
           {activeMenu === "orders" && <OrdersSection />}
-          {activeMenu === "products" && <ProductsPage business={business} />}
+          {activeMenu === "products" && business && <ProductsPage business={business} />}
           {activeMenu === "analytics" && <AnalyticsSection />}
           {activeMenu === "conversations" && <ConversationsSection />}
           {activeMenu === "settings" && <SettingsSection />}
