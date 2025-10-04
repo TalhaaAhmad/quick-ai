@@ -137,7 +137,7 @@ export default function CSVImportModal({ businessId, onClose }: CSVImportModalPr
     } catch (err) {
       console.error('❌ Import error:', err);
       console.error('BusinessId:', businessId);
-      setError(err.message);
+      setError(err instanceof Error ? err.message : 'An error occurred during import');
     } finally {
       setLoading(false);
     }
