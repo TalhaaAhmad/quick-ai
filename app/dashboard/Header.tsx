@@ -38,7 +38,7 @@ interface HeaderProps {
 
 export default function Header({ primaryColor = PRIMARY_COLOR, onSidebarToggle, user, business, onLogout }: HeaderProps) {
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const dropdownRef = useRef(null);
+  const dropdownRef = useRef<HTMLDivElement>(null);
   
   // Get business name from props or fallback
   const businessName = business?.businessName || user?.businessName || "QuickAI Business";
