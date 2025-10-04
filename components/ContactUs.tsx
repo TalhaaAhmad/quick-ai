@@ -83,12 +83,14 @@ export default function ContactUs() {
             boxShadow: `0 6px 18px ${primaryColor}50`,
           }}
           onMouseEnter={(e) => {
-            e.target.style.background = '#245f28';
-            e.target.style.transform = 'translateY(-2px)';
+            const target = e.target as HTMLButtonElement;
+            target.style.background = '#245f28';
+            target.style.transform = 'translateY(-2px)';
           }}
           onMouseLeave={(e) => {
-            e.target.style.background = primaryColor;
-            e.target.style.transform = 'translateY(0)';
+            const target = e.target as HTMLButtonElement;
+            target.style.background = primaryColor;
+            target.style.transform = 'translateY(0)';
           }}
         >
           Send Message
