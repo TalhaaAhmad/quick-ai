@@ -2,7 +2,41 @@ import React, { useState, useRef, useEffect } from "react";
 
 const PRIMARY_COLOR = "#2C7B34";
 
-export default function Header({ primaryColor = PRIMARY_COLOR, onSidebarToggle, user, business, onLogout }) {
+interface User {
+  userId: string;
+  businessId: string;
+  businessName?: string;
+  email: string;
+  ownerName: string;
+}
+
+interface Business {
+  _id: string;
+  ownerName: string;
+  email: string;
+  ownerId: string;
+  businessName: string;
+  businessDescription: string;
+  whatsappIntegrated: boolean;
+  whatsappToken?: string;
+  createdAt: number;
+  roles: string[];
+  settings: {
+    notifications: boolean;
+    language: string;
+  };
+  lastLoginAt: number;
+}
+
+interface HeaderProps {
+  primaryColor?: string;
+  onSidebarToggle?: () => void;
+  user: User | null;
+  business: Business | null | undefined;
+  onLogout: () => void;
+}
+
+export default function Header({ primaryColor = PRIMARY_COLOR, onSidebarToggle, user, business, onLogout }: HeaderProps) {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
   

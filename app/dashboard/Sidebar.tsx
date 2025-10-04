@@ -15,7 +15,15 @@ const menuItems = [
   { key: "settings", label: "Settings", icon: "⚙️" },
 ];
 
-export default function Sidebar({ activeKey, setActiveKey, isOpen, onToggle, onLogout }) {
+interface SidebarProps {
+  activeKey: string;
+  setActiveKey: (key: string) => void;
+  isOpen: boolean;
+  onToggle: () => void;
+  onLogout: () => void;
+}
+
+export default function Sidebar({ activeKey, setActiveKey, isOpen, onToggle, onLogout }: SidebarProps) {
   const [isMobile, setIsMobile] = useState(false);
 
   // Detect screen size (simple)
