@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useMutation } from 'convex/react';
 import { api } from '../../convex/_generated/api';
+import { Id } from '../../convex/_generated/dataModel';
 
 const PRIMARY_COLOR = '#2C7B34';
 
@@ -127,7 +128,7 @@ export default function CSVImportModal({ businessId, onClose }: CSVImportModalPr
       console.log('📦 Products to import:', csvData.length);
       
       const result = await importProducts({
-        businessId,
+        businessId: businessId as Id<"businesses">,
         products: csvData,
       });
 
