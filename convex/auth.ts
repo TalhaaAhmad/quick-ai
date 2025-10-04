@@ -161,7 +161,7 @@ export const getUserByEmail = query({
 
 // Get business by owner ID
 export const getBusinessByOwnerId = query({
-  args: { ownerId: v.id("users") },
+  args: { ownerId: v.string() },
   handler: async (ctx, args) => {
     return await ctx.db
       .query("businesses")
