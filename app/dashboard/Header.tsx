@@ -45,8 +45,8 @@ export default function Header({ primaryColor = PRIMARY_COLOR, onSidebarToggle, 
 
   useEffect(() => {
     // Close dropdown when clicking outside
-    function handleClickOutside(event) {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+    function handleClickOutside(event: MouseEvent) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
         setDropdownOpen(false);
       }
     }
