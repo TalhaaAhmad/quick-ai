@@ -37,7 +37,7 @@ export default function Sidebar({ activeKey, setActiveKey, isOpen, onToggle, onL
   }, []);
 
   // Close sidebar on menu click (mobile)
-  function handleMenuClick(key) {
+  function handleMenuClick(key: string) {
     setActiveKey(key);
     if (isMobile && onToggle) onToggle();
   }
