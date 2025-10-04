@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useQuery, useMutation } from 'convex/react';
 import { api } from '../../convex/_generated/api';
+import { Id } from '../../convex/_generated/dataModel';
 import ProductModal from './ProductModal';
 import CSVImportModal from './CSVImportModal';
 
@@ -64,14 +65,14 @@ export default function ProductsPage({ business }: ProductsPageProps) {
   // Queries
   const products = useQuery(api.products.getProducts, 
     business?._id ? {
-      businessId: business._id,
+      businessId: business._id as Id<"businesses">,
       category: selectedCategory || undefined,
     } : "skip"
   );
 
   const categories = useQuery(api.products.getCategories, 
     business?._id ? {
-      businessId: business._id,
+      businessId: business._id as Id<"businesses">,
     } : "skip"
   );
 
