@@ -34,7 +34,6 @@ export default function AuthScreen() {
   // Convex mutations
   const createBusiness = useMutation(api.auth.signUp);
   const signIn = useMutation(api.auth.signIn);
-  const updateLastLogin = useMutation(api.auth.updateLastLogin);
 
   const [formData, setFormData] = useState<FormData>({
     ownerName: '',
