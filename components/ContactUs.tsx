@@ -63,7 +63,7 @@ export default function ContactUs() {
           style={inputStyle}
         />
         <textarea
-          rows="5"
+          rows={5}
           placeholder="Tell us how we can help you"
           required
           style={{ ...inputStyle, resize: 'vertical' }}
