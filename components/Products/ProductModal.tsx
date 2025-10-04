@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useMutation } from 'convex/react';
 import { api } from '../../convex/_generated/api';
+import { Id } from '../../convex/_generated/dataModel';
 
 const PRIMARY_COLOR = '#2C7B34';
 
@@ -117,13 +118,13 @@ export default function ProductModal({ product, businessId, onClose }: ProductMo
       if (product) {
         // Update existing product
         await updateProduct({
-          productId: product._id,
+          productId: product._id as Id<"products">,
           ...productData,
         });
       } else {
         // Create new product
         await createProduct({
-          businessId,
+          businessId: businessId as Id<"businesses">,
           ...productData,
         });
       }
@@ -131,7 +132,7 @@ export default function ProductModal({ product, businessId, onClose }: ProductMo
       onClose();
     } catch (err) {
       console.error('Error saving product:', err);
-      setError(err.message);
+      setError(err instanceof Error ? err.message : 'An error occurred while saving the product');
     } finally {
       setLoading(false);
     }
