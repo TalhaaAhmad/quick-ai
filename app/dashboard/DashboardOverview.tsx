@@ -4,7 +4,30 @@ const PRIMARY_COLOR = "#2C7B34";
 const TEXT_COLOR = "#1a1a1a";
 const TEXT_LIGHT = "#666";
 
-export default function DashboardOverview({ primaryColor = PRIMARY_COLOR, business }) {
+interface Business {
+  _id: string;
+  ownerName: string;
+  email: string;
+  ownerId: string;
+  businessName: string;
+  businessDescription: string;
+  whatsappIntegrated: boolean;
+  whatsappToken?: string;
+  createdAt: number;
+  roles: string[];
+  settings: {
+    notifications: boolean;
+    language: string;
+  };
+  lastLoginAt: number;
+}
+
+interface DashboardOverviewProps {
+  primaryColor?: string;
+  business: Business | null | undefined;
+}
+
+export default function DashboardOverview({ primaryColor = PRIMARY_COLOR, business }: DashboardOverviewProps) {
   const [isMobile, setIsMobile] = useState(false);
 
   // Detect mobile screen size
