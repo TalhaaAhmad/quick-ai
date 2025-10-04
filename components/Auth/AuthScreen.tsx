@@ -88,7 +88,7 @@ export default function AuthScreen() {
         await handleSignup();
       }
     } catch (err) {
-      setError(err.message || 'An error occurred. Please try again.');
+      setError(err instanceof Error ? err.message : 'An error occurred. Please try again.');
     } finally {
       setLoading(false);
     }
@@ -118,7 +118,7 @@ export default function AuthScreen() {
       router.push('/dashboard');
     } catch (err) {
       console.error("Signup error:", err);
-      throw err;
+      throw err instanceof Error ? err : new Error('Signup failed');
     }
   };
   
@@ -143,7 +143,7 @@ export default function AuthScreen() {
       router.push('/dashboard');
     } catch (err) {
       console.error("Login error:", err);
-      throw err;
+      throw err instanceof Error ? err : new Error('Login failed');
     }
   };
   
